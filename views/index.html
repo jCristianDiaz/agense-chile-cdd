@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MongoBox Admin Panel" />
+  <meta name="author" content="MongoBox" />
+  <title>{{title}} | Login</title>
+
+
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
+  <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap.css" />
+  <link rel="stylesheet" href="stylesheets/signin.css" />
+  <script src="javascripts/jquery/jquery-1.11.0.min.js"></script>
+
+
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+
+<div class="container">
+
+  <form class="form-signin" method="post" action="authentication">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    {% if error %}
+    <h4 style="color: red">{{ error }}</h4>
+    {% endif %}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+    <a href="createaccount" class="btn btn-lg btn-primary btn-block">Registrar</a>
+
+  </form>
+
+</div> <!-- /container -->
+
+
+</body>
+</html>

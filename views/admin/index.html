@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MongoBox Admin Panel" />
+  <meta name="author" content="MongoBox" />
+  <title>{{title}} | Login</title>
+
+
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
+  <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap.css" />
+  <link rel="stylesheet" href="stylesheets/signin.css" />
+  <script src="javascripts/jquery/jquery-1.11.0.min.js"></script>
+
+
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+
+<div class="container">
+
+  <h4><strong>Bienvenido:</strong> {{ user }}  | <a href="/logout">Salir</a></h4>
+  <br/>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-hover" style="width: 80%; width: auto;">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Profile</th>
+          <th>Holding</th>
+          <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in usuarios %}
+        <tr>
+          <th scope="row">{{ user.id }}</th>
+          <td>{{ user.name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.Profile.name }}</td>
+          <td>{{ user.Holding.name }}</td>
+          <td><a href="/update{{ user.id }}" >Edit</a> -  <a onclick="deleteUser('{{ user.id }}')" >Delete</a> </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div> <!-- /container -->
+
+<script src="javascripts/underscore/underscore-min.js"></script>
+<script src="javascripts/backbone/backbone-min.js"></script>
+
+<script type="application/javascript">
+
+  function deleteUser(user_id){
+    var r = confirm("Realmente desea eliminar el usuario id: " + user_id);
+    if (r == true) {
+      window.location = '/delete'+ user_id;
+    }
+  }
+
+</script>
+</body>
+</html>
